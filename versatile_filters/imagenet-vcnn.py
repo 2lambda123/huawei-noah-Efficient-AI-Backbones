@@ -2,7 +2,6 @@
 #            Huawei Technologies Co., Ltd. <foss@huawei.com>
 import argparse
 import os
-import random
 import shutil
 import time
 import warnings
@@ -21,6 +20,7 @@ import torchvision.datasets as datasets
 #import torchvision.models as models
 
 import vcnn as models
+import secrets
 
 model_names = sorted(name for name in models.__dict__
     if name.islower() and not name.startswith("__")
@@ -100,7 +100,7 @@ def main():
     args = parser.parse_args()
 
     if args.seed is not None:
-        random.seed(args.seed)
+        secrets.SystemRandom().seed(args.seed)
         torch.manual_seed(args.seed)
         cudnn.deterministic = True
         warnings.warn('You have chosen to seed training. '
