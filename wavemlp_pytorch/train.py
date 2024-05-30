@@ -318,10 +318,9 @@ def main():
     assert args.rank >= 0
 
     if args.distributed:
-        _logger.info('Training in distributed mode with multiple processes, 1 GPU per process. Process %d, total %d.'
-                     % (args.rank, args.world_size))
+        _logger.info('Training in distributed mode with multiple processes, 1 GPU per process. Process %d, total %d.', args.rank, args.world_size)
     else:
-        _logger.info('Training with a single process on %d GPUs.' % args.num_gpu)
+        _logger.info('Training with a single process on %d GPUs.', args.num_gpu)
 
     torch.manual_seed(args.seed + args.rank)
 
@@ -365,8 +364,7 @@ def main():
 
     
     if args.local_rank == 0:
-        _logger.info('Model %s created, param count: %d' %
-                     (args.model, sum([m.numel() for m in model.parameters()])))
+        _logger.info('Model %s created, param count: %d', args.model, sum([m.numel() for m in model.parameters()]))
 
     data_config = resolve_data_config(vars(args), model=model, verbose=args.local_rank == 0)
 

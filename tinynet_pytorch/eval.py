@@ -64,7 +64,7 @@ def validate(args):
     model.load_state_dict(state_dict, strict=False)
 
     params = sum([param.numel() for param in model.parameters()])
-    logging.info('Model %s created, #params: %d' % (args.model_name, params))
+    logging.info('Model %s created, #params: %d', args.model_name, params)
 
     data_config = resolve_data_config(vars(args), model=model)
 
